@@ -1,14 +1,12 @@
 ﻿using MyFreeFrom.Models;
 using MyFreeFrom.Shared.Enums;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyFreeFrom.Temp
 {
     public class ResturantsDataStore
     {
+        public static ResturantsDataStore Current { get; } = new ResturantsDataStore();
         public List<ResturantDTO> Resturants { get; set; }
 
         public ResturantsDataStore()
@@ -79,7 +77,7 @@ namespace MyFreeFrom.Temp
                             Description = "always my go to spot for gluten free goodness, but the prices are rising",
                             GfScore = 4,
                             DfScore = 4,
-                            MfScore = 0,
+                            MfScore = 1,
                             PriceRating = 5
                         }
 
@@ -133,7 +131,7 @@ namespace MyFreeFrom.Temp
                             Title = "good location and food",
                             Description = "cheap and cheerfull in a nice place",
                             GfScore = 4,
-                            DfScore = 4,
+                            DfScore = 5,
                             MfScore = 3,
                             PriceRating = 3
                         },
@@ -143,7 +141,7 @@ namespace MyFreeFrom.Temp
                             Title = "Seen Worse cafe's",
                             Description = "we got what we paid for",
                             GfScore = 3,
-                            DfScore = 3,
+                            DfScore = 5,
                             MfScore = 3,
                             PriceRating = 3
                         },

@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyFreeFrom.Database;
 
 namespace MyFreeFrom
 {
@@ -20,6 +22,7 @@ namespace MyFreeFrom
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<MyFreeFromContext>(x => x.UseSqlServer("TODO: Add Connection String"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

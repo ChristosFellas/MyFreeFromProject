@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyFreeFrom.Database;
 using MyFreeFrom.Temp;
 using System.Linq;
 
@@ -7,6 +8,11 @@ namespace MyFreeFrom.Controllers
     [Route("api/resturants")]
     public class ResturantsController : Controller
     {
+        private ResturantContext _context;
+        public ResturantsController(ResturantContext context)
+        {
+            _context = context;
+        }
         [HttpGet()]
         public IActionResult GetResturants()
         {

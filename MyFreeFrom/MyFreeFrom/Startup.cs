@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyFreeFrom.Database;
+using MyFreeFrom.Temp;
 
 namespace MyFreeFrom
 {
@@ -22,11 +23,11 @@ namespace MyFreeFrom
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<MyFreeFromContext>(x => x.UseSqlServer("TODO: Add Connection String"));
+            services.AddDbContext<ResturantContext>(x => x.UseSqlServer("Data Source=PC05034;Initial Catalog=Resturants;Integrated Security=True"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ResturantContext resturantContext)
         {
             if (env.IsDevelopment())
             {
@@ -42,6 +43,8 @@ namespace MyFreeFrom
             }
 
             app.UseStaticFiles();
+
+            resturantContext.Seed();
 
             app.UseMvc(routes =>
         {

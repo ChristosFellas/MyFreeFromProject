@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using MyFreeFrom.Database;
+using MyFreeFrom.Models;
+using MyFreeFrom.Repositories;
 using MyFreeFrom.Temp;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MyFreeFrom.Controllers
@@ -8,28 +13,26 @@ namespace MyFreeFrom.Controllers
     [Route("api/resturants")]
     public class ResturantsController : Controller
     {
-        private ResturantContext _context;
-        public ResturantsController(ResturantContext context)
+        private IResturantRepository _resturantRepository;
+        public ResturantsController(IResturantRepository resturantRepository)
         {
-            _context = context;
+            _resturantRepository = resturantRepository;
         }
+
         [HttpGet()]
-        public IActionResult GetResturants()
+        public IActionResult GetResturants(bool includeReviews)
         {
-            return Ok(ResturantsDataStore.Current.Resturants);
+            var resturantEntity = _resturantRepository.GetResturants(includeReviews);
+
+            return Ok(Mapper.Map<IEnumerable<ResturantDTO>>(resturantEntity));
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetResturant(int id)
+        public IActionResult GetResturant(int id, bool includeReviews)
         {
-            var resturant = ResturantsDataStore.Current.Resturants.Where(x => x.Id == id);
+            var resturantEntity = _resturantRepository.GetResturant(id, includeReviews);
 
-            if (resturant == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(resturant);
+            return Ok(Mapper.Map<ResturantDTO>(resturantEntity));
         }
     }
 }

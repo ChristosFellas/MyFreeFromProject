@@ -14,5 +14,7 @@ namespace MyFreeFrom.Entities
         public int DfScore { get; set; }
         public int MfScore { get; set; }
         public int PriceRating { get; set; }
+        public Resturant Resturant { get; set; }
+        public int ResturantId { get; set; }
     }
 }

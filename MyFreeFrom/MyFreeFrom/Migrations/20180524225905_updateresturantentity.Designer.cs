@@ -12,9 +12,10 @@ using System;
 namespace MyFreeFrom.Migrations
 {
     [DbContext(typeof(ResturantContext))]
-    partial class ResturantContextModelSnapshot : ModelSnapshot
+    [Migration("20180524225905_updateresturantentity")]
+    partial class updateresturantentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

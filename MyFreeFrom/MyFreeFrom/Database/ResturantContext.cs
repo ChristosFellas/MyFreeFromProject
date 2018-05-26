@@ -11,7 +11,8 @@ namespace MyFreeFrom.Database
             Database.Migrate();
         }
         public DbSet<Resturant> Resturants { get; set; }
-        public DbSet<Review> Reviews { get; set; }
         public DbSet<DietOption> DietOptions { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+
     }
 }

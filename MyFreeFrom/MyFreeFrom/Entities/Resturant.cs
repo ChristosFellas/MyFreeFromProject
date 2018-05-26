@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyFreeFrom.Entities
 {
@@ -23,14 +22,7 @@ namespace MyFreeFrom.Entities
         public string County { get; set; }
         public string PhoneNumber { get; set; }
         public string WebsiteUrl { get; set; }
-        public ICollection<DietOption> DietOptions { get; set; }
-        public ICollection<Review> Reviews { get; set; }
-        public int GFReviewTotal => Reviews.Sum(x => x.GfScore);
-        public int GfReviewAverage => GFReviewTotal / Reviews.Where(x => x.GfScore != 0).Count();
-        public int DFReviewTotal => Reviews.Sum(x => x.DfScore);
-        public int DFReviewAverage => DFReviewTotal / Reviews.Where(x => x.DfScore != 0).Count();
-        public int MFReviewTotal => Reviews.Sum(x => x.MfScore);
-        public int MFReviewAverage => MFReviewTotal % Reviews.Where(x => x.MfScore != 0).Count();
-
+        public ICollection<DietOption> DietOptions { get; set; } = new List<DietOption>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

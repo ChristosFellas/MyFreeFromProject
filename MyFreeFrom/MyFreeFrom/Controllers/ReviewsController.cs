@@ -62,5 +62,25 @@ namespace MyFreeFrom.Controllers
 
             return CreatedAtRoute("GetReview", new { resturantId, reviewId = createdReview.Id } , createdReview);
         }
+
+        [HttpDelete("{resturantId}/reviews/{reviewId}")]
+        public IActionResult DeleteReview(int resturantId, int reviewId)
+        {
+            var review = _resturantRepository.GetReviewForResturant(resturantId, reviewId);
+
+            if (review == null)
+            {
+                return NotFound();
+            }
+
+            _resturantRepository.DeleteReview(review);
+
+            if (!_resturantRepository.Save())
+            {
+                return StatusCode(500, "A problem happened when trying to save the entity.");
+            }
+
+            return NoContent();
+        }
     }
 }

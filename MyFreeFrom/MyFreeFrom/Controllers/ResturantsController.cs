@@ -46,7 +46,7 @@ namespace MyFreeFrom.Controllers
             var resturantEntity = Mapper.Map<Resturant>(resturant);
             _resturantRepository.AddResturant(resturantEntity);
 
-            if (! _resturantRepository.Save())
+            if (!_resturantRepository.Save())
             {
                 return StatusCode(500, "A problem happened when trying to save the entity.");
             }
@@ -56,5 +56,24 @@ namespace MyFreeFrom.Controllers
             return CreatedAtRoute("GetResturant", new { createdResturant.Id, includeReviews = true },  createdResturant);
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteResturant(int id)
+        {
+            var resturant = _resturantRepository.GetResturant(id, true);
+
+            if (resturant == null)
+            {
+                return NotFound();
+            }
+
+            _resturantRepository.DeleteResturant(resturant);
+
+            if(!_resturantRepository.Save())
+            {
+                return StatusCode(500, "A problem happened when trying to save the entity.");
+            }
+
+            return NoContent();
+        }
     }
 }

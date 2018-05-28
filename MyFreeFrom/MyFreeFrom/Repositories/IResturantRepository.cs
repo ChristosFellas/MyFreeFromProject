@@ -11,6 +11,8 @@ namespace MyFreeFrom.Repositories
         Review GetReviewForResturant(int resturantId, int reviewId);
         void AddResturant(Resturant resturant);
         void AddReviewForResturant(int resturantId, Review review);
+        void DeleteResturant(Resturant resturant);
+        void DeleteReview(Review review);
         bool Save();
     }
 }

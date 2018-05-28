@@ -62,5 +62,15 @@ namespace MyFreeFrom.Repositories
         {
             _context.Resturants.Add(resturant);
         }
+
+        public void DeleteResturant(Resturant resturant)
+        {
+            _context.Resturants.Remove(resturant);
+        }
+
+        public void DeleteReview(Review review)
+        {
+            _context.Reviews.Remove(review);
+        }
     }
 }

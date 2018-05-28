@@ -1,12 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using MyFreeFrom.Database;
+using MyFreeFrom.Entities;
 using MyFreeFrom.Models;
 using MyFreeFrom.Repositories;
-using MyFreeFrom.Temp;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MyFreeFrom.Controllers
 {
@@ -27,12 +24,37 @@ namespace MyFreeFrom.Controllers
             return Ok(Mapper.Map<IEnumerable<ResturantDTO>>(resturantEntity));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name ="GetResturant")]
         public IActionResult GetResturant(int id, bool includeReviews)
         {
             var resturantEntity = _resturantRepository.GetResturant(id, includeReviews);
 
             return Ok(Mapper.Map<ResturantDTO>(resturantEntity));
         }
+
+        [HttpPost]
+        public IActionResult CreateResturant([FromBody] ResturantDTO resturant)
+        {
+            if (resturant == null)
+                return BadRequest();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var resturantEntity = Mapper.Map<Resturant>(resturant);
+            _resturantRepository.AddResturant(resturantEntity);
+
+            if (! _resturantRepository.Save())
+            {
+                return StatusCode(500, "A problem happened when trying to save the entity.");
+            }
+
+            var createdResturant = Mapper.Map<ResturantDTO>(resturantEntity);
+
+            return CreatedAtRoute("GetResturant", new { createdResturant.Id, includeReviews = true },  createdResturant);
+        }
+
     }
 }

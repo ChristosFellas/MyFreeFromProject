@@ -53,7 +53,8 @@ namespace MyFreeFrom
             AutoMapper.Mapper.Initialize(
                 cfg =>
                 {
-                    cfg.CreateMap<Resturant, ResturantDTO>();
+                    cfg.CreateMap<Resturant, ResturantDTO>().ReverseMap();
+                    cfg.CreateMap<Review, ReviewDTO>().ReverseMap();
                 });
 
             app.UseMvc(routes =>

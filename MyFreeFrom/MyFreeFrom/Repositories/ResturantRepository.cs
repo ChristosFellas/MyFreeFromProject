@@ -46,5 +46,21 @@ namespace MyFreeFrom.Repositories
         {
             return _context.Reviews.Where(x => x.ResturantId == resturantId).ToList();
         }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
+        }
+
+        public void AddReviewForResturant(int resturantId, Review review)
+        {
+            var resturant = GetResturant(resturantId, true);
+            resturant.Reviews.Add(review);
+        }
+
+        public void AddResturant(Resturant resturant)
+        {
+            _context.Resturants.Add(resturant);
+        }
     }
 }

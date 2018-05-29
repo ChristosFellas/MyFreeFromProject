@@ -1,6 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../core/data.service';
+import { Sorter } from '../core/sorter';
 import { IResturant, IDietOption, IReview } from '../shared/interfaces';
 
 @Component({
@@ -16,7 +17,7 @@ export class ResturantsComponent implements OnInit {
     filteredResturants: IResturant[] = [];
 
 
-    constructor(private dataService: DataService) {
+    constructor(private dataService: DataService, private sorter: Sorter) {
     }
 
 
@@ -32,5 +33,9 @@ export class ResturantsComponent implements OnInit {
             },
                 (err: any) => console.log(err),
                 () => console.log('getResturants() was called.'));
+    }
+
+    sort(prop: string) {
+        this.sorter.sort(this.resturants, prop);
     }
 }

@@ -6,16 +6,24 @@
                 {{ title }}
             </h3>
         </header>
-        <br/>
+        <br />
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="navbar">
                     <!--<filter-textbox (changed)="filterChanged($event)"></filter-textbox>-->
                 </div>
-                <div class="col-md-4">
-                    <a class="btn btn-default" [routerLink]="['/resturants', '0']">Add New Resturant</a>
-                </div>
             </div>
+            <div class="col-md-4">
+                <a class="btn btn-default" [routerLink]="['/resturants', '0']">Add New Resturant</a>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-default" (click)="sort('dietOptions.length')">Sort by Diet Options Count</a>
+            </div>
+
+
+
+
+            <resturants-grid [resturants]="filteredResturants"></resturants-grid>
         </div>
     </div>
 </div>

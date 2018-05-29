@@ -17,9 +17,9 @@ namespace MyFreeFrom.Controllers
         }
 
         [HttpGet()]
-        public IActionResult GetResturants(bool includeReviews)
+        public IActionResult GetResturants()
         {
-            var resturantEntity = _resturantRepository.GetResturants(includeReviews);
+            var resturantEntity = _resturantRepository.GetResturants();
 
             return Ok(Mapper.Map<IEnumerable<ResturantDTO>>(resturantEntity));
         }
@@ -27,7 +27,7 @@ namespace MyFreeFrom.Controllers
         [HttpGet("{id}", Name ="GetResturant")]
         public IActionResult GetResturant(int id, bool includeReviews)
         {
-            var resturantEntity = _resturantRepository.GetResturant(id, includeReviews);
+            var resturantEntity = _resturantRepository.GetResturant(id);
 
             return Ok(Mapper.Map<ResturantDTO>(resturantEntity));
         }
@@ -59,7 +59,7 @@ namespace MyFreeFrom.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteResturant(int id)
         {
-            var resturant = _resturantRepository.GetResturant(id, true);
+            var resturant = _resturantRepository.GetResturant(id);
 
             if (resturant == null)
             {

@@ -5,8 +5,8 @@ namespace MyFreeFrom.Repositories
 {
     public interface IResturantRepository
     {
-        IEnumerable<Resturant> GetResturants(bool includeReviews);
-        Resturant GetResturant(int resturantId, bool includeReviews);
+        IEnumerable<Resturant> GetResturants();
+        Resturant GetResturant(int resturantId);
         IEnumerable<Review> GetReviewsForResturant(int resturantId);
         Review GetReviewForResturant(int resturantId, int reviewId);
         void AddResturant(Resturant resturant);

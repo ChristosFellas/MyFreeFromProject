@@ -14,26 +14,20 @@ namespace MyFreeFrom.Repositories
         {
             _context = context;
         }
-        public IEnumerable<Resturant> GetResturants(bool includeReviews)
+        public IEnumerable<Resturant> GetResturants()
         {
-            if (includeReviews)
-                return _context.Resturants
-                    .Include(x => x.Reviews)
-                    .Include(x => x.DietOptions)
-                    .ToList();
-
-            return _context.Resturants.ToList();
+            return _context.Resturants
+                .Include(x => x.Reviews)
+                .Include(x => x.DietOptions)
+                .ToList();
         }
 
-        public Resturant GetResturant(int resturantId, bool includeReviews)
+        public Resturant GetResturant(int resturantId)
         {
-            if (includeReviews)
-                return _context.Resturants
-                    .Include(x => x.Reviews)
-                    .Include(x => x.DietOptions)
-                    .FirstOrDefault(x => x.Id == resturantId);
-
-            return _context.Resturants.FirstOrDefault(x => x.Id == resturantId);
+            return _context.Resturants
+                .Include(x => x.Reviews)
+                .Include(x => x.DietOptions)
+                .FirstOrDefault(x => x.Id == resturantId);
         }
 
         public Review GetReviewForResturant(int resturantId, int reviewId)
@@ -53,7 +47,7 @@ namespace MyFreeFrom.Repositories
 
         public void AddReviewForResturant(int resturantId, Review review)
         {
-            var resturant = GetResturant(resturantId, true);
+            var resturant = GetResturant(resturantId);
             resturant.Reviews.Add(review);
         }
 

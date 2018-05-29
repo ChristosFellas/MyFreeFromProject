@@ -8,8 +8,9 @@ import { AppComponent } from '../components/app/app.component';
 import { NavMenuComponent } from '../components/navmenu/navmenu.component';
 import { HomeComponent } from '../components/home/home.component';
 import { ResturantsComponent } from '../resturants/resturants.component';
-
+import { ResturantsGridComponent } from '../resturants/resturant-grid.component';
 import { DataService } from '../core/data.service';
+import { Sorter } from './sorter';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { DataService } from '../core/data.service';
         NavMenuComponent,
         HomeComponent,
         ResturantsComponent,
+        ResturantsGridComponent
     ],
     imports: [
         CommonModule,
@@ -29,9 +31,8 @@ import { DataService } from '../core/data.service';
             { path: 'resturants', component: ResturantsComponent },
             { path: '**', redirectTo: 'home' }
         ])
-        
     ],
-    providers: [DataService]
+    providers: [DataService, Sorter]
 })
 export class AppModuleShared {
 }

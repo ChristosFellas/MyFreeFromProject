@@ -23,14 +23,20 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\core\data.service.ts" />
+    <None Remove="ClientApp\app\core\sorter.ts" />
+    <None Remove="ClientApp\app\resturants\resturant-grid.component.ts" />
     <None Remove="ClientApp\app\resturants\resturants.component.ts" />
     <None Remove="ClientApp\app\shared\interfaces.ts" />
+    <None Remove="ClientApp\app\shared\property-resolver.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\core\data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\core\sorter.ts" />
+    <TypeScriptCompile Include="ClientApp\app\resturants\resturant-grid.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\resturants\resturants.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\interfaces.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\property-resolver.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

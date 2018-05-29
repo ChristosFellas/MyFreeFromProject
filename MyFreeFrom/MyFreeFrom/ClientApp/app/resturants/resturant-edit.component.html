@@ -1,0 +1,68 @@
+﻿<div>
+    <header>
+        <h3>
+            <span class="glyphicon glyphicon-user"></span>
+            {{ resturant.name }}
+        </h3>
+    </header>
+    <br />
+    <form (ngSubmit)="submit()" #resturantForm="ngForm" class="editForm" novalidate>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="resturant.name" #name="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" name="description" [(ngModel)]="resturant.description" #description="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Latitude</label>
+            <input type="text" class="form-control" name="lat" [(ngModel)]="resturant.latitude" #latitude="ngModel" />
+        </div>
+        <div class="form-group">
+            <label>Longitude</label>
+            <input type="text" class="form-control" name="long" [(ngModel)]="resturant.longitude" #longitude="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" name="add1" [(ngModel)]="resturant.address" #address="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Address 2</label>
+            <input type="text" class="form-control" name="add2" [(ngModel)]="resturant.address2" #address2="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" class="form-control" name="city" [(ngModel)]="resturant.city" #city="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>County</label>
+            <input type="text" class="form-control" name="county" [(ngModel)]="resturant.county" #county="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" name="number" [(ngModel)]="resturant.phoneNumber" #phoneNumber="ngModel" required>
+        </div>
+        <div class="form-group">
+            <label>Website Url</label>
+            <input type="text" class="form-control" name="url" [(ngModel)]="resturant.websiteUrl" #websiteUrl="ngModel" required>
+        </div>
+
+        <br />
+        <div *ngIf="resturant">
+            <div class="alert alert-warning" *ngIf="resturant.id && deleteMessageEnabled">
+                Delete Resturant?&nbsp;&nbsp;<button class="btn btn-danger" (click)="delete($event)">Yes</button>&nbsp;&nbsp;
+                <button class="btn btn-default" (click)="deleteMessageEnabled = false">No</button>
+            </div>
+            <button class="btn btn-danger" *ngIf="resturant.id && !deleteMessageEnabled" (click)="deleteMessageEnabled = true">Delete</button>&nbsp;&nbsp;
+
+            <div class="pull-right" *ngIf="!deleteMessageEnabled">
+                <button class="btn btn-default" (click)="cancel($event)">Cancel</button>&nbsp;&nbsp;
+                <button type="submit" class="btn btn-success">{{ operationText }}</button>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+</div>

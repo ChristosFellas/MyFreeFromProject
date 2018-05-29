@@ -9,6 +9,7 @@ import { NavMenuComponent } from '../components/navmenu/navmenu.component';
 import { HomeComponent } from '../components/home/home.component';
 import { ResturantsComponent } from '../resturants/resturants.component';
 import { ResturantsGridComponent } from '../resturants/resturant-grid.component';
+import { ResturantEditComponent } from '../resturants/resturant-edit.component';
 import { DataService } from '../core/data.service';
 import { Sorter } from './sorter';
 
@@ -19,7 +20,8 @@ import { Sorter } from './sorter';
         NavMenuComponent,
         HomeComponent,
         ResturantsComponent,
-        ResturantsGridComponent
+        ResturantsGridComponent,
+        ResturantEditComponent
     ],
     imports: [
         CommonModule,
@@ -29,6 +31,7 @@ import { Sorter } from './sorter';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'resturants', component: ResturantsComponent },
+            { path: 'resturants/:id', component: ResturantEditComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],

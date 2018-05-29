@@ -25,5 +25,10 @@ export class DataService {
             })
     }
 
+    getResturant(id: string): Observable<IResturant> {
+        return this.http.get(this.baseUrl + '/' + id)
+            .map((res: Response) => res.json());
+    }
+
 
 }

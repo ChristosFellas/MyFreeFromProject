@@ -16,7 +16,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let resturant of resturants">
-                            <td>{{ resturant.name }}</td>
+                            <td><a [routerLink]="['/resturants', resturant.id]">{{ resturant.name }}</a></td>
                             <td>{{ resturant.city }}</td>
                             <td>{{ resturant.county }}</td>
                             <td>{{ resturant.websiteUrl }}</td>

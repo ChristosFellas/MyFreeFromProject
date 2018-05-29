@@ -21,6 +21,18 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="ClientApp\app\core\data.service.ts" />
+    <None Remove="ClientApp\app\resturants\resturants.component.ts" />
+    <None Remove="ClientApp\app\shared\interfaces.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\core\data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\resturants\resturants.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\interfaces.ts" />
+  </ItemGroup>
+
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">

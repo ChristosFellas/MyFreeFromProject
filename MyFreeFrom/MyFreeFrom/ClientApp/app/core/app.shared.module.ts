@@ -4,15 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './components/app/app.component';
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { HomeComponent } from './components/home/home.component';
+import { AppComponent } from '../components/app/app.component';
+import { NavMenuComponent } from '../components/navmenu/navmenu.component';
+import { HomeComponent } from '../components/home/home.component';
+import { ResturantsComponent } from '../resturants/resturants.component';
+
+import { DataService } from '../core/data.service';
+
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
-        HomeComponent
+        HomeComponent,
+        ResturantsComponent,
     ],
     imports: [
         CommonModule,
@@ -21,9 +26,12 @@ import { HomeComponent } from './components/home/home.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
+            { path: 'resturants', component: ResturantsComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+        
+    ],
+    providers: [DataService]
 })
 export class AppModuleShared {
 }

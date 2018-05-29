@@ -18,11 +18,5 @@ namespace MyFreeFrom.Models
         public string WebsiteUrl { get; set; }
         public List<DietOptionDTO> DietOptions { get; set; }
         public List<ReviewDTO> Reviews { get; set; }
-        //public int? GFReviewTotal =>  Reviews.Sum(x => x.GfScore);
-        //public int? GfReviewAverage => GFReviewTotal / Reviews.Where(x => x.GfScore != 0).Count();
-        //public int? DFReviewTotal => Reviews.Sum(x => x.DfScore);
-        //public int? DFReviewAverage => DFReviewTotal / Reviews.Where(x => x.DfScore != 0).Count();
-        //public int? MFReviewTotal => Reviews.Sum(x => x.MfScore);
-        //public int? MFReviewAverage => MFReviewTotal % Reviews.Where(x => x.MfScore != 0).Count();
     }
 }

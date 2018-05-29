@@ -9,6 +9,7 @@ import { IResturant, IDietOption } from '../shared/interfaces';
     templateUrl: './resturant-edit.component.html'
 })
 export class ResturantEditComponent implements OnInit {
+    dietOptions: IDietOption[] = [];
 
     resturant: IResturant = {
         name: '',
@@ -21,9 +22,10 @@ export class ResturantEditComponent implements OnInit {
         county: '',
         websiteUrl: '',
         phoneNumber: '',
+        dietOptions: this.dietOptions
     };
 
-    dietOptions: IDietOption[] = [];
+
     operationText: string = 'Insert';
     errorMessage: string ='';
 

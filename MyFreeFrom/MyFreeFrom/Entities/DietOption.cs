@@ -9,6 +9,6 @@ namespace MyFreeFrom.Entities
     public class DietOption
     {
         public int Id { get; set; }
-        public DietTypeEnum DietType { get; set; }
+        public string DietType { get; set; }
     }
 }

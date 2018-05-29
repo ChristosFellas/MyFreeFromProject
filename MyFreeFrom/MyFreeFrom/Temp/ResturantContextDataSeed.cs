@@ -34,11 +34,11 @@ namespace MyFreeFrom.Temp
                     {
                         new DietOption()
                         {
-                            DietType = DietTypeEnum.GlutenFree
+                            DietType = "GF"
                         },
                         new DietOption()
                         {
-                            DietType = DietTypeEnum.DairyFree
+                            DietType = "DF"
                         }
                     },
                     Reviews = new List<Review>()
@@ -97,15 +97,15 @@ namespace MyFreeFrom.Temp
                     {
                         new DietOption()
                         {
-                            DietType = DietTypeEnum.GlutenFree
+                            DietType = "GF"
                         },
                         new DietOption()
                         {
-                            DietType = DietTypeEnum.DairyFree
+                            DietType = "DF"
                         },
                         new DietOption()
                         {
-                            DietType = DietTypeEnum.MeatFree
+                            DietType = "MF"
                         }
                     },
                     Reviews = new List<Review>()

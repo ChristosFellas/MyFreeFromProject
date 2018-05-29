@@ -22,7 +22,11 @@
                             <td>{{ resturant.websiteUrl }}</td>
                             <td>{{ resturant.phoneNumber }}</td>
                             <td>{{ resturant.reviews.length }}</td>
-                            <th>{{ resturant.dietOptions.length }}</th>
+                            <td>
+                                <span *ngFor="let option of resturant.dietOptions">
+                                 {{option.dietType}}
+                                </span>
+                            </td>
                         </tr>
                         <tr *ngIf="!resturants.length">
                             <td>&nbsp;</td>

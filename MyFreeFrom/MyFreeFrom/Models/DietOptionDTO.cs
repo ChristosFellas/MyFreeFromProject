@@ -6,6 +6,6 @@ namespace MyFreeFrom.Models
     public class DietOptionDTO
     {
         public int Id { get; set; }
-        public DietTypeEnum DietType { get; set; }
+        public string DietType { get; set; }
     }
 }

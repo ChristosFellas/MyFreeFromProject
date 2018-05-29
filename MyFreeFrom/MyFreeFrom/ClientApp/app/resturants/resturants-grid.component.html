@@ -16,7 +16,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let resturant of resturants">
-                            <td><a [routerLink]="['/resturants', resturant.id]">{{ resturant.name }}</a></td>
+                            <td>{{ resturant.name }}</td>
                             <td>{{ resturant.city }}</td>
                             <td>{{ resturant.county }}</td>
                             <td>{{ resturant.websiteUrl }}</td>
@@ -27,6 +27,7 @@
                                  {{option.dietType}}
                                 </span>
                             </td>
+                            <td><a [routerLink]="['/resturants', resturant.id]">Edit</a></td>
                         </tr>
                         <tr *ngIf="!resturants.length">
                             <td>&nbsp;</td>

@@ -30,5 +30,12 @@ export class DataService {
             .map((res: Response) => res.json());
     }
 
-
+    insertResturant(resturant: IResturant): Observable<IResturant> {
+        return this.http.post(this.baseUrl, resturant)
+            .map((res: Response) => {
+                const data = res.json();
+                console.log('insertCustomer status: ' + data.status);
+                return data.resturant;
+            });
+    }
 }

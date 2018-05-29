@@ -27,7 +27,7 @@ export class ResturantEditComponent implements OnInit {
 
 
     operationText: string = 'Insert';
-    errorMessage: string ='';
+    errorMessage: string = '';
 
     constructor(private router: Router,
         private route: ActivatedRoute,
@@ -47,6 +47,17 @@ export class ResturantEditComponent implements OnInit {
                 this.resturant = resturant;
             }),
             (err: any) => console.log(err);
+    }
+
+    submit() {
+        if (this.resturant.id) {
+
+        } else {
+            this.dataService.insertResturant(this.resturant)
+                .subscribe((resturant: IResturant) => {
+                        this.router.navigate(['/resturants']);
+                });
+        }
     }
 
     cancel(event: Event) {

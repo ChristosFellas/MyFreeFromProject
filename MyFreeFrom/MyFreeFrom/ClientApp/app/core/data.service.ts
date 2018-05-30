@@ -38,4 +38,9 @@ export class DataService {
                 return data.resturant;
             });
     }
+
+    deleteResturant(id: string): Observable<boolean> {
+        return this.http.delete(this.baseUrl + '/' + id)
+            .map((res: Response) => res.json());
+    }
 }

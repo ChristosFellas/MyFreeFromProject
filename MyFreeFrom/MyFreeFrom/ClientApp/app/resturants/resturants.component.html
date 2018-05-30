@@ -17,7 +17,7 @@
                 <a class="btn btn-default" [routerLink]="['/resturants', '0']">Add New Resturant</a>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-default" (click)="sort('dietOptions.length')">Sort by Diet Options Count</a>
+                <a class="btn btn-default" (click)="sort(dietOptions.length)">Sort by Diet Options Count</a>
             </div>
 
             <resturants-grid [resturants]="filteredResturants"></resturants-grid>

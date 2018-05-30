@@ -25,6 +25,8 @@ export class ResturantEditComponent implements OnInit {
         dietOptions: this.dietOptions
     };
 
+    id: any;
+
 
     operationText: string = 'Insert';
     errorMessage: string = '';
@@ -34,10 +36,10 @@ export class ResturantEditComponent implements OnInit {
         private dataService: DataService) { }
 
     ngOnInit() {
-        let id = this.route.snapshot.params['id'];
-        if (id !== '0') {
+        this.id = this.route.snapshot.params['id'];
+        if (this.id !== '0') {
             this.operationText = 'Update';
-            this.getResturant(id);
+            this.getResturant(this.id);
         }
     }
 
@@ -55,9 +57,17 @@ export class ResturantEditComponent implements OnInit {
         } else {
             this.dataService.insertResturant(this.resturant)
                 .subscribe((resturant: IResturant) => {
-                        this.router.navigate(['/resturants']);
+                    this.router.navigate(['/resturants']);
                 });
         }
+    }
+
+    delete(event: Event) {
+        event.preventDefault();
+        this.dataService.deleteResturant(this.id)
+            .subscribe((status: boolean) => {
+                    this.router.navigate(['/resturants']);
+            });
     }
 
     cancel(event: Event) {

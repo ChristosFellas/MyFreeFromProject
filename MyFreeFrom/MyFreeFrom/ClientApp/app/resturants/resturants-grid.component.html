@@ -27,6 +27,8 @@
                                  {{option.dietType}}
                                 </span>
                             </td>
+
+                            <td><a [routerLink]="['/reviews', resturant.id]">Reviews</a></td>
                             <td><a [routerLink]="['/resturants', resturant.id]">Edit</a></td>
                         </tr>
                         <tr *ngIf="!resturants.length">

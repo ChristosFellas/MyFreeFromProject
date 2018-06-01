@@ -10,7 +10,10 @@ import { HomeComponent } from '../components/home/home.component';
 import { ResturantsComponent } from '../resturants/resturants.component';
 import { ResturantsGridComponent } from '../resturants/resturant-grid.component';
 import { ResturantEditComponent } from '../resturants/resturant-edit.component';
-import { DataService } from '../core/data.service';
+import { ReviewsComponent } from '../reviews/reviews-component';
+import { ReviewsGridComponent } from '../reviews/reviews-grid.component';
+import { ResturantDataService } from '../core/resturantData.service';
+import { ReviewDataService } from '../core/reviewDataService';
 import { Sorter } from './sorter';
 
 
@@ -21,7 +24,9 @@ import { Sorter } from './sorter';
         HomeComponent,
         ResturantsComponent,
         ResturantsGridComponent,
-        ResturantEditComponent
+        ResturantEditComponent,
+        ReviewsComponent,
+        ReviewsGridComponent
     ],
     imports: [
         CommonModule,
@@ -32,10 +37,11 @@ import { Sorter } from './sorter';
             { path: 'home', component: HomeComponent },
             { path: 'resturants', component: ResturantsComponent },
             { path: 'resturants/:id', component: ResturantEditComponent },
+            { path: 'reviews/:id', component: ReviewsComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers: [DataService, Sorter]
+    providers: [ResturantDataService, ReviewDataService, Sorter]
 })
 export class AppModuleShared {
 }

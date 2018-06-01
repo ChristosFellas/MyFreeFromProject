@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 import { IResturant, IReview, IDietOption } from '../shared/interfaces';
 
 @Injectable()
-export class DataService {
+export class ResturantDataService {
 
     baseUrl: string = '/api/resturants';
 

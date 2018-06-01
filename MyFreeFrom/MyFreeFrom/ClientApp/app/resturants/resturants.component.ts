@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../core/data.service';
+import { ResturantDataService } from '../core/resturantData.service';
 import { Sorter } from '../core/sorter';
 import { IResturant, IDietOption, IReview } from '../shared/interfaces';
 
@@ -12,22 +12,18 @@ import { IResturant, IDietOption, IReview } from '../shared/interfaces';
 
 export class ResturantsComponent implements OnInit {
 
-
     resturants: IResturant[] = [];
     filteredResturants: IResturant[] = [];
 
-
-    constructor(private dataService: DataService, private sorter: Sorter) {
+    constructor(private resturantDataService: ResturantDataService, private sorter: Sorter) {
     }
-
 
     ngOnInit() {
         this.getResturants();
     }
 
-
     getResturants() {
-        this.dataService.getResturants()
+        this.resturantDataService.getResturants()
             .subscribe((resturants: IResturant[]) => {
                 this.resturants = this.filteredResturants = resturants;
             },

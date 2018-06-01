@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { DataService } from '../core/data.service';
+import { ResturantDataService } from '../core/resturantData.service';
 import { IResturant, IDietOption } from '../shared/interfaces';
 
 @Component({
@@ -33,7 +33,7 @@ export class ResturantEditComponent implements OnInit {
 
     constructor(private router: Router,
         private route: ActivatedRoute,
-        private dataService: DataService) { }
+        private resturantDataService: ResturantDataService) { }
 
     ngOnInit() {
         this.id = this.route.snapshot.params['id'];
@@ -44,7 +44,7 @@ export class ResturantEditComponent implements OnInit {
     }
 
     getResturant(id: string) {
-        this.dataService.getResturant(id)
+        this.resturantDataService.getResturant(id)
             .subscribe((resturant: IResturant) => {
                 this.resturant = resturant;
             }),
@@ -55,7 +55,7 @@ export class ResturantEditComponent implements OnInit {
         if (this.resturant.id) {
 
         } else {
-            this.dataService.insertResturant(this.resturant)
+            this.resturantDataService.insertResturant(this.resturant)
                 .subscribe((resturant: IResturant) => {
                     this.router.navigate(['/resturants']);
                 });
@@ -64,7 +64,7 @@ export class ResturantEditComponent implements OnInit {
 
     delete(event: Event) {
         event.preventDefault();
-        this.dataService.deleteResturant(this.id)
+        this.resturantDataService.deleteResturant(this.id)
             .subscribe((status: boolean) => {
                     this.router.navigate(['/resturants']);
             });

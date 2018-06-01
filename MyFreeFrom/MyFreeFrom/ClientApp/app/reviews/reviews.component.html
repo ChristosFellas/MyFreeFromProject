@@ -1,0 +1,26 @@
+﻿<div class="resturant view indent">
+    <div class="container">
+        <header>
+            <h3>
+                <span class="glyphicon glyphicon-cutlery"></span>
+                {{ title }}
+            </h3>
+        </header>
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="navbar">
+                    <!--<filter-textbox (changed)="filterChanged($event)"></filter-textbox>-->
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!--<a class="btn btn-default" [routerLink]="['/resturants', '0']">Add New Review</a>-->
+            </div>
+            <div class="col-md-4">
+                <!--<a class="btn btn-default" (click)="sort(dietOptions.length)">Sort by Diet Options Count</a>-->
+            </div>
+
+            <reviews-grid [reviews]="reviews"></reviews-grid>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿<div class="container">
+    <div class="row grid-container">
+        <div class="col-md-10">
+            <div class="table">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th (click)="sort('name')">Title</th>
+                            <th (click)="sort('city')">GF Score</th>
+                            <th (click)="sort('county')">DF Score</th>
+                            <th (click)="sort('websiteUrl')">MF Score</th>
+                            <th (click)="sort('phoneNumber')">Price Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let review of reviews">
+                            <td>{{ review.title }}</td>
+                            <td>{{ review.gfScore }}</td>
+                            <td>{{ review.dfScore }}</td>
+                            <td>{{ review.mfScore }}</td>
+                            <td>{{ review.priceRating }}</td>
+                        </tr>
+                        <tr *ngIf="!reviews.length">
+                            <td>&nbsp;</td>
+                            <td colspan="6">No Records Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
